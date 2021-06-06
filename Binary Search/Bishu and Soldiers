@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+int32_t main()
+{
+  int n;
+  cin>>n;
+  int a[n+10];
+  int pf[n+10];
+  for(int i=0;i<n;i++){
+  cin>>a[i];
+  }
+  
+  sort(a,a+n);
+  pf[0]=a[0];
+  for(int i=1;i<n;i++)
+  pf[i]=pf[i-1]+a[i];
+  
+  int q;
+  cin>>q;
+  while(q--){
+      int x;
+      cin>>x;
+      int ind=upper_bound(a,a+n,x)-a;
+      if(ind==0){
+          cout<<0<<" "<<0<<endl;
+          break;
+      }
+      else cout<<ind<<" "<<pf[ind-1]<<endl;
+  }
+
+    return 0;
+}
