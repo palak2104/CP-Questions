@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+void soldier (vector < int >&a, vector < int >&b)
+{
+   vector<int>c(a.size());
+   partial_sum(a.begin(),a.end(),c.begin());
+   int arrow_sum=0;
+   for(auto arrow:b){
+       arrow_sum+=arrow;
+       if(arrow_sum>=c.back()) arrow_sum=0;
+       auto it=lower_bound(c.begin(),c.end(),arrow_sum);
+       cout<<distance(it,c.end())-(*it==arrow_sum)<<endl;
+   }
+   return;
+}
+
+int32_t main ()
+{
+  int n, m;
+  cin>>n>>m;
+  vector < int >a;
+  vector < int >b;
+  for (int i = 0; i < n; i++)
+    {
+      int num;
+      cin >> num;
+      a.push_back (num);
+    }
+  for (int i = 0; i < n; i++)
+    {
+      int num;
+      cin >> num;
+      b.push_back (num);
+    }
+  soldier(a, b);
+  return 0;
+}
