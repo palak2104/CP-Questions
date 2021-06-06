@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+#define int             long long int
+using namespace std;
+
+int32_t main()
+{
+   int t;
+   cin>>t;
+   while(t--){
+       int n,k;
+       cin>>n>>k;
+       int a[n+10];
+       for(int i=0;i<n;i++){
+           cin>>a[i];
+       }
+       sort(a,a+n);
+       int low=1;
+       int high=*max_element(a,a+n);
+       int ans=0;
+       while(low<=high){
+           int mid=(low+high)/2;
+           int cow=1;
+           int prev=a[0];
+           for(int i=1;i<n;i++){
+               if(a[i]-prev>=mid){
+                   cow++;
+                   prev=a[i];
+               }
+               if(cow==k) break;
+           }
+           if(cow==k){
+               ans=mid;
+               low=mid+1;
+           }
+           else high=mid-1;
+       }
+       cout<<ans<<endl;
+   }
+    return 0;
+}
+
