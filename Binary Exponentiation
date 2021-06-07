@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int power(int base,int n){
+    if(n==0) return 1;
+    if(n==1) return base;
+    int ans=1;
+    while(n>0){
+        if(n%2!=0){
+            ans*=base;
+            n--;
+        }
+        else{
+            base=base*base;
+            n/=2;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int base,n;
+    cin>>base>>n;
+    cout<<power(base,n);
+
+    return 0;
+}
+
