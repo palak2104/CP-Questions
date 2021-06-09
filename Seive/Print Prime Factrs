@@ -1,0 +1,28 @@
+#include <iostream>
+#define int long long
+using namespace std;
+int N=100000;
+int a[100000];
+int32_t main()
+{
+  for(int i=1;i<=N;i++){
+            a[i]=i;
+    }
+    for(int i=2;i<=N;i++){
+        if(a[i]==i){
+            for(int j=i*i;j<=N;j+=i){
+                if(a[j]==j){
+                   a[j]=i; 
+                }
+            }
+        }    
+    }  
+int n;
+cin>>n;
+while(n!=1){
+    cout<<a[n]<<" ";
+    n=n/a[n];
+}
+    return 0;
+}
+
