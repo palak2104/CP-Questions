@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+int m[1000000];
+  int a[1000000];
+int32_t main()
+{
+    
+   ios_base::sync_with_stdio(false);
+    cin.tie(NULL); 
+    
+  
+    int N=1000000;
+  
+  for(int i=2;i<=N;i++){
+      a[i]=1;
+      m[i]=1;
+  }
+  
+  for(int i=2;i<=1000000;i++){
+      if(a[i]==1){
+          for(int j=i*i;j<=1000000;j+=i){
+              if(a[j]==1){
+                  a[j]=0;
+                  m[i]++;
+              }
+          }
+      }
+  }
+/*for(auto it:m)
+cout<<it.first<<" "<<it.second<<endl;*/
+int t;
+cin>>t;
+while(t--){
+int n;
+cin>>n;
+cout<<m[n]<<endl;
+}
+
+    return 0;
+}
+
