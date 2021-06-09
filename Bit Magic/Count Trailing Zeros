@@ -1,0 +1,15 @@
+//__builtin_clz(x): This function is used to count the trailing zeros of the integer. Note : clz = count trailing zero’s
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    int z=__builtin_ctz(n);
+    cout<<z;
+
+    return 0;
+}
