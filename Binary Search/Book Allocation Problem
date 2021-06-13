@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+bool isFeasible(int mid,int a[],int n,int m){
+    int count=1;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=a[i];
+        if(sum>mid){
+            count++;
+            sum=a[i];
+        }
+    }
+    return(count<=m);
+}
+int book(int n,int a[],int m){
+    int low=INT_MIN,high;
+    for(int i=0;i<n;i++){
+        low=max(low,a[i]);
+        high+=a[i];
+    }
+    int ans=0;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(isFeasible(mid,a,n,m)){
+            ans=mid;
+            high=mid-1;
+        }
+        else low=mid+1;
+        
+    }
+    return ans;
+}
+
+int main()
+{
+  int n;
+  cin>>n;
+  int arr[1000];
+  for(int i=0;i<n;i++)
+  cin>>arr[i];
+  int m;
+  cin>>m;
+  cout<<book(n,arr,m);
+    return 0;
+}
