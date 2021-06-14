@@ -1,0 +1,48 @@
+
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+bool  is_sufficient(int n,int prata,int arr[],int mid){
+    int tot_prata=0;
+    for(int i=0;i<n;i++){
+        int j=arr[i];
+        int k=2;
+        int min=j;
+        while(min<=mid){
+          min+= j*k;
+          tot_prata++;
+          k++;
+        }
+     
+    }
+    return (tot_prata>=prata);
+}
+int roti(int n,int prata,int arr[]){
+    int low=1;
+    int high=1e8;
+    int ans=0;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(is_sufficient(n,prata,arr,mid)){
+            ans=mid;
+            high=mid-1;
+        }
+        else low=mid+1;
+    }
+    return ans;
+}
+int32_t main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+    int prata,n;
+    cin>>prata>>n;
+    int arr[n+10];
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
+    cout<<roti(n,prata,arr)<<endl;
+    }
+
+    return 0;
+}
