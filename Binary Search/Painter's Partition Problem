@@ -75,3 +75,48 @@ int main()
 	}
 	return 0;
 }  // } Driver Code Ends
+/******************************Basic One*******************************/
+#include <bits/stdc++.h>
+
+using namespace std;
+bool isFeasible(int n,int arr[],int k,int mid){
+    int count=1;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=arr[i];
+        if(sum>mid){
+            sum=arr[i];
+            count++;
+        }
+    }
+    return (count<=k);
+}
+int painter(int n,int arr[],int k){
+    int low=*max_element(arr,arr+n);
+    int high=0;
+    for(int i=0;i<n;i++)
+    high+=arr[i];
+    int ans=0;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(isFeasible(n,arr,k,mid)){
+        ans=mid;
+        high=mid-1;
+        }
+        else low=mid+1;
+    }
+    return ans;
+}
+int main()
+{
+  int n;
+  cin>>n;
+  int arr[n];
+  for(int i=0;i<n;i++)
+  cin>>arr[i];
+  int k;
+  cin>>k;
+  cout<<painter(n,arr,k);
+
+    return 0;
+}
