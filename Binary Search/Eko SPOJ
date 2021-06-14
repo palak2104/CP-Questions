@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+bool is_sufficient(int n,int wood,int arr[],int mid){
+    int sum=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]>=mid)
+        sum+=arr[i]-mid;
+    }
+    return (sum>=wood);
+}
+int cutter(int n,int wood,int arr[]){
+    int low=0;
+    int high=*max_element(arr,arr+n);
+    int ans=0;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(is_sufficient(n,wood,arr,mid)){
+        ans=mid;   
+        low=mid+1;
+        }
+        else high=mid-1;
+    }
+    return ans;
+}
+int32_t main()
+{
+  int n,wood;
+  cin>>n>>wood;
+  int arr[n];
+  for(int i=0;i<n;i++)
+  cin>>arr[i];
+  cout<<cutter(n,wood,arr)<<endl;
+
+    return 0;
+}
