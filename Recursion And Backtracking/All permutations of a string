@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+void print(int ind,int n,int arr[],int sum,vector<int>&res){
+    if(ind==n){
+        if(sum==0){
+            for(auto it:res)
+            cout<<it<<" ";
+            cout<<endl;
+        }
+        return;
+    }
+    if(sum>=arr[ind]){
+    res.push_back(arr[ind]);
+    print(ind+1,n,arr,sum-arr[ind],res);
+    res.pop_back();
+    }
+    print(ind+1,n,arr,sum,res);
+    return;
+}
+
+int main()
+{
+   int n;
+   cin>>n;
+   int arr[n+10];
+   for(int i=0;i<n;i++)
+   cin>>arr[i];
+   int sum;
+   cin>>sum;
+   vector<int>res;
+   print(0,n,arr,sum,res);
+
+    return 0;
+}
