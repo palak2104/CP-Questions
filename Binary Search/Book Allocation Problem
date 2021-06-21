@@ -14,7 +14,7 @@ bool isFeasible(int mid,int a[],int n,int m){
     return(count<=m);
 }
 int book(int n,int a[],int m){
-    int low=INT_MIN,high;
+    int low=INT_MIN,high=0;
     for(int i=0;i<n;i++){
         low=max(low,a[i]);
         high+=a[i];
